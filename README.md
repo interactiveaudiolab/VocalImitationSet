@@ -1,29 +1,42 @@
 # VocalImitationSet
+v1.0 2018-05-18
 
 ## Overview
 Imitating sounds with one's voice is a natural way of delivering an audio concept in human-to-human communication. If a machine could understand human's vocal imitation, users could be able to interact with machine in this natural way for various audio-related tasks. 
 
 The VocalImitationSet is a collection of crowd-sourced vocal imitations of a large set of diverse sounds collected from Freesound (https://freesound.org/), which were curated based on Google's AudioSet ontology (https://research.google.com/audioset/). We expect that this dataset will help research communities obtain better understanding of human's vocal imitation and build a machine understand the imitations as humans do.
 
+## Contact info
+Interactive Audio Lab
+* http://music.eecs.northwestern.edu
+
+Bongjun Kim
+* bongjun@u.northwestern.edu
+* http://www.bongjunkim.com
+
+Bryan Pardo
+* pardo@northwestern.edu
+* http://www.bryanpardo.com
+
+## Acknowledgement
+This dataset is based on works supported by NSF Grant 1617497.
 
 ## Sound category structure
-The sound categories are based on the Google AudioSet ontology. Some sound categories that are not imitable, such as *guitar amplifier*, or music genres were removed. We finally selected 301 different sound categories from the Audioset ontology and collected audio recordings of each categories from www.FreeSound.org. A single high-quality recording was selected for each category, which means we selected 301 recordings to be imitated. The list of included sound categories is in `reference_audio_categories.txt`.
+The sound categories are based on the Google AudioSet ontology. Some sound categories that are not imitable, such as *guitar amplifier*, or music genres were removed. We finally selected 301 different sound categories from the Audioset ontology and collected audio recordings of each categories from Freesound. A single high-quality recording was selected for each category, which means we selected 301 recordings to be imitated. The list of included sound categories is in `reference_audio_categories.txt`.
 
 ## Vocal imitation collection method
-We collected crowd-sourced vocal imitations through Amazon Mechanical Turk using the VocalSketch data collection interface presented in the following paper:
+We collected crowd-sourced vocal imitations through Amazon Mechanical Turk using the VocalSketch data collection interface presented in [1].
 
-* Cartwright, M., Pardo, B. VocalSketch: Vocally Imitating Audio Concepts. In *Proceedings of ACM Conference on Human Factors in Computing Systems* (2015). http://dx.doi.org/10.1145/2702123.2702387
+Given a reference recording (a clean recording downloaded from Freesound), participants were asked to imitate the sound. The first imitations of each participant in a new session were saved as *training* recordings. participants were also allowed to rerecord their vocal imitations unlimited times before submitting the final one. These discarded imitations were saved as *draft* recordings. For more detailed procedures of imitation collection, please refer to [1].
 
-Given a reference recording (a clean recording downloaded from Freesound), participants were asked to imitate the sound. The first imitations of each participant in a new session were saved as ** *training* ** recordings. participants were also allowed to rerecord their vocal imitations unlimited times before submitting the final one. These discarded imitations were saved as ** *draft* ** recordings. For more detailed procedures, please refer to the paper.
-
-We collected 6,115 vocal imitations (i.e. recordings that participants submitted as final versions), 4,444 *draft* recordings, and 683 *training* recordings. The 6,115 vocal limitations consist of roughly 20 imitations for each of 301 reference recordings.
+We collected 6,115 vocal imitations (i.e. recordings that participants submitted as final versions NOT including *draft* and *training* recordings), 4,444 *draft* recordings, and 683 *training* recordings. The final 6,115 vocal limitations consist of roughly 20 imitations for each of 301 reference recordings.
 
 ## Quality assessment and rating
-We conducted an internal quality assessment task where experts evaluated the quality of all the final collected imitations (6,115). Training and draft vocal recordings were not evaluated. The people who performed quality assessment were experts in audio processing: students and researchers from the Interactive Audio Lab (http://music.cs.northwestern.edu/) at Northwestern University and the Audio Information Research (AIR) Lab (http://www2.ece.rochester.edu/projects/air/index.html) at the University of Rochester. There were 15 evaluators, who listened to 6,115 vocal imitations on a web interface designed for this particular listening task. 
+We conducted an internal quality assessment task where experts evaluated the quality of all the final collected imitations (6,115). Training and draft vocal recordings were not evaluated. The people who performed quality assessment were experts in audio processing: students and researchers from the Interactive Audio Lab (http://music.cs.northwestern.edu/) at Northwestern University and the Audio Information Research Lab (http://www2.ece.rochester.edu/projects/air/index.html) at the University of Rochester. There were 15 evaluators, who listened to 6,115 vocal imitations on a web interface designed for this particular listening task. 
 
 A single quality assessment consisted of listening to a pair of recordings: one reference recording and one vocal imitation. The evaluator was asked if the imitation was a vocal imitation of the reference recording. If the answer was "no" the evaluator was asked if this was a vocal imitation at all. If the answer was "yes," the evaluator was asked to assess the quality of the imitation on a scale from 0: It is a very poor imitation to 100: It is almost identical to the original sound. 
 
-Through this assessment session, we removed 514 vocal imitations that evaluators reported as not being a vocal imitation of the reference sound. This left us with 5,601 recordings that have quality ratings. The 5,601 vocal limitations are stored in the `included` directory. All the other recordings including the removed 514 imitations, 4,444 draft recordings, and 683 training recordings are stored in the `excluded` directory.
+Through this assessment session, we removed 514 vocal imitations that evaluators reported as not being a vocal imitation of the reference sound. This left us with 5,601 recordings that have quality ratings. The 5,601 vocal limitations are stored in the `included` directory. All the other recordings including the removed 514 imitations, 4,444 *draft* recordings, and 683 *training* recordings are stored in the `excluded` directory.
 
 Due to the size of the dataset, each vocal imitation was evaluated by a single rator. However, we measured the consistency of each rator in two ways. First an average of 2 out of every 30 pairs evaluated by an individual were incorrect pairs. We paired vocal imitations with reference recordings that they were not an imitation of. This let us measure how well reviewers were able to detect incorrect pairs. Second, an average of 4 out of every 30 pairs presented to an evaluator were repeat pairs, previously presented. This lets us measure the consistency of evaluation scores for each reviewer.
 
@@ -31,15 +44,15 @@ The quality assessment data includes all the data from the quality assessment ta
 
 
 ## Description of directories and files
-* **`included/`** This directory contains all of the vocal imitations recordings that our human rators deemed a vocal imitation of the paired reference audio recordings.
-* **`excluded/`** This directory contains all of the vocal imitations recordings from participant's practice sessions. It also contains other vocal recordings. These include the vocal recordings that evaluators did not think were a vocal imitation of their reference audio. Training recordings and draft recordings are also included.
-* **`reference_recordings/`** This directory contains the audio files that participants were asked to listen to and imitate.
-* **`reference_audio_credits.csv`** This file contains the credit information about all the reference recordings we downloaded from Freesound.
-* **`reference_audio_categories.txt`** This file contains names of sound categories selected from the AudioSet ontology.
+* **`included/`**: This directory contains all of the vocal imitations recordings that our human rators deemed a vocal imitation of the paired reference audio recordings.
+* **`excluded/`**: This directory contains all of the vocal imitations recordings from participant's practice sessions. It also contains other vocal recordings. These include the vocal recordings that evaluators did not think were a vocal imitation of their reference audio. Training recordings and draft recordings are also included.
+* **`reference_recordings/`**: This directory contains the audio files that participants were asked to listen to and imitate.
+* **`reference_audio_credits.csv`**: This file contains the credit information about all the reference recordings we downloaded from Freesound.
+* **`reference_audio_categories.txt`** (tab-delimited): This file contains names of sound categories selected from the AudioSet ontology.
 
-* **`vocal_imitations.txt`** This file contains information about all the crowd-sourced vocal imitation recordings.
+* **`vocal_imitations.txt`** (tab-delimited): This file contains information about all the crowd-sourced vocal imitation recordings.
 
-* **`vocal_imitations_rating.txt`** This file contains evaluation data of all the vocal imitations collected by our expert raters.
+* **`vocal_imitations_rating.txt`** (tab-delimited): This file contains evaluation data of all the vocal imitations collected by our expert raters.
 * **`participant_survey.csv`** This file contains the background survey data provided by participants providing vocal imitations.
 
 
@@ -102,25 +115,10 @@ The quality assessment data includes all the data from the quality assessment ta
 
 ### Column descriptions for `reference_audio_credits.csv`
 * **filename** - The file name of reference recordings
-* **user** - User name who uploaded the recording to Freesound.org
+* **user** - User name who uploaded the recording to Freesound
 * **user_url** URL to the user page on Freesound
 * **file_url** URL to the recordings on Freesound
 
-## Contact info
-Please help us improve VocalImitationSet by sending your feedback.
 
-Interactive Audio Lab
-* http://music.eecs.northwestern.edu
-
-Bongjun Kim
-* bongjun@u.northwestern.edu
-* http://www.bongjunkim.com
-
-Bryan Pardo
-* pardo@northwestern.edu
-* http://www.bryanpardo.com
-
-
-## Acknowledgement
-
-This dataset is based on works supported by NSF Grant 1617497.
+## References
+[1] Cartwright, M., Pardo, B. VocalSketch: Vocally Imitating Audio Concepts. In *Proceedings of ACM Conference on Human Factors in Computing Systems* (2015). http://dx.doi.org/10.1145/2702123.2702387
