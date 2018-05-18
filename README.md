@@ -19,7 +19,7 @@ Bryan Pardo
 * http://www.bryanpardo.com
 
 ## Acknowledgement
-This dataset is based on works supported by NSF Grant 1617497.
+This dataset was supported by NSF Grant 1617497.
 
 ## Sound category structure
 The sound categories are based on the Google AudioSet ontology. Some sound categories that are not imitable, such as *guitar amplifier*, or music genres were removed. We finally selected 301 different sound categories from the Audioset ontology and collected audio recordings of each categories from Freesound. A single high-quality recording was selected for each category, which means we selected 301 recordings to be imitated. The list of included sound categories is in `reference_audio_categories.txt`.
