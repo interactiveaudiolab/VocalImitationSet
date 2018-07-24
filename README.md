@@ -22,14 +22,14 @@ Bryan Pardo
 This dataset was supported by NSF Grant 1617497.
 
 ## Sound category structure
-The sound categories are based on the Google AudioSet ontology. Some sound categories that are not imitable, such as *guitar amplifier*, or music genres were removed. We finally selected 301 different sound categories from the Audioset ontology and collected audio recordings of each categories from Freesound. A single high-quality recording was selected for each category, which means we selected 301 recordings to be imitated. The list of included sound categories is in `reference_audio_categories.txt`.
+The sound categories are based on the Google AudioSet ontology. Some sound categories that are not imitable, such as *guitar amplifier*, or music genres were removed. We finally selected 302 different sound categories from the Audioset ontology and collected audio recordings of each categories from Freesound. A single high-quality recording was selected for each category, which means we selected 302 recordings to be imitated. The list of included sound categories is in `reference_audio_categories.txt`.
 
 ## Vocal imitation collection method
 We collected crowd-sourced vocal imitations through Amazon Mechanical Turk using the VocalSketch data collection interface presented in [1].
 
 Given a reference recording (a clean recording downloaded from Freesound), participants were asked to imitate the sound. The first imitations of each participant in a new session were saved as *training* recordings. participants were also allowed to rerecord their vocal imitations unlimited times before submitting the final one. These discarded imitations were saved as *draft* recordings. For more detailed procedures of imitation collection, please refer to [1].
 
-We collected 6,115 vocal imitations (i.e. recordings that participants submitted as final versions NOT including *draft* and *training* recordings), 4,444 *draft* recordings, and 683 *training* recordings. The final 6,115 vocal limitations consist of roughly 20 imitations for each of 301 reference recordings.
+We collected 6,115 vocal imitations (i.e. recordings that participants submitted as final versions NOT including *draft* and *training* recordings), 4,444 *draft* recordings, and 683 *training* recordings. The final 6,115 vocal limitations consist of roughly 20 imitations for each of 302 reference recordings.
 
 ## Quality assessment and rating
 We conducted an internal quality assessment task where experts evaluated the quality of all the final collected imitations (6,115). Training and draft vocal recordings were not evaluated. The people who performed quality assessment were experts in audio processing: students and researchers from the Interactive Audio Lab (http://music.cs.northwestern.edu/) at Northwestern University and the Audio Information Research Lab (http://www2.ece.rochester.edu/projects/air/index.html) at the University of Rochester. There were 15 evaluators, who listened to 6,115 vocal imitations on a web interface designed for this particular listening task. 
