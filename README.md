@@ -1,5 +1,5 @@
-# VocalImitationSet
-v1.0 2018-05-18
+# Vocal Imitation Set
+v1.1 2018-08-18
 
 ## Overview
 Imitating sounds with one's voice is a natural way of delivering an audio concept in human-to-human communication. If a machine could understand human's vocal imitation, users could be able to interact with machine in this natural way for various audio-related tasks. 
@@ -22,7 +22,7 @@ Bryan Pardo
 This dataset was supported by NSF Grant 1617497.
 
 ## Sound category structure
-The sound categories are based on the Google AudioSet ontology. Some sound categories that are not imitable, such as *guitar amplifier*, or music genres were removed. We finally selected 302 different sound categories from the Audioset ontology and collected audio recordings of each categories from Freesound. A single high-quality recording was selected for each category, which means we selected 302 recordings to be imitated. The list of included sound categories is in `reference_audio_categories.txt`.
+The sound classes are based on the Google AudioSet ontology. Some sound classes that are not imitable, such as *guitar amplifier*, or music genres were removed. We finally selected 302 different sound classes from the Audioset ontology and collected audio recordings of each classes from Freesound. A single high-quality recording was selected for each class, which means we selected 302 recordings to be imitated. The list of included sound classes is in `original_recordings_classes.txt`.
 
 ## Vocal imitation collection method
 We collected crowd-sourced vocal imitations through Amazon Mechanical Turk using the VocalSketch data collection interface presented in [1].
@@ -44,11 +44,12 @@ The quality assessment data includes all the data from the quality assessment ta
 
 
 ## Description of directories and files
-* **`included/`**: This directory contains all of the vocal imitations recordings that our human rators deemed a vocal imitation of the paired reference audio recordings.
-* **`excluded/`**: This directory contains all of the vocal imitations recordings from participant's practice sessions. It also contains other vocal recordings. These include the vocal recordings that evaluators did not think were a vocal imitation of their reference audio. Training recordings and draft recordings are also included.
-* **`reference_recordings/`**: This directory contains the audio files that participants were asked to listen to and imitate.
-* **`reference_audio_credits.csv`**: This file contains the credit information about all the reference recordings we downloaded from Freesound.
-* **`reference_audio_categories.txt`** (tab-delimited): This file contains names of sound categories selected from the AudioSet ontology.
+* **`vocal_imitations/included/`**: This directory contains all of the vocal imitations recordings that our human rators deemed a vocal imitation of the paired reference audio recordings.
+* **`vocal_imitations/excluded/`**: This directory contains all of the vocal imitations recordings from participant's practice sessions. It also contains other vocal recordings. These include the vocal recordings that evaluators did not think were a vocal imitation of their reference audio. Training recordings and draft recordings are also included.
+* **`original_recordings/reference/`**: This directory contains the audio files that participants were asked to listen to and imitate.
+* **`original_recordings/non_reference/`**: This directory contains the audio files that were not imitated. These recordings can be used to test fine-grained search.
+* **`original_recordings_license.csv`**: This file contains the credit information about all the original recordings we downloaded from Freesound.
+* **`original_recordings_classes.txt`** (tab-delimited): This file contains class name and ontological labels of original recordings. The labels were taken from the AudioSet onotlogy.
 
 * **`vocal_imitations.txt`** (tab-delimited): This file contains information about all the crowd-sourced vocal imitation recordings.
 
@@ -58,16 +59,17 @@ The quality assessment data includes all the data from the quality assessment ta
 
 
 ## Description of the column of the text files
-### Column descriptions for `reference_audio_categories.txt` (tab-delimited)
-* **category_id** - unique Id of the category
+### Column descriptions for `original_recordings_classes.txt` (tab-delimited)
+* **filename** - file name of the original recording
+* **classname** - class name of the original recording
 * **category_d1** - category name at the depth-1 in the hierarchy of the ontology (The name exactly matches with Google's AudioSet ontology)
 * **category_d2** - category name at the depth-2 in the hierarchy of the ontology (The name exactly matches with Google's AudioSet ontology)
 * **category_d3** - category name at the depth-3 in the hierarchy of the ontology (The name exactly matches with Google's AudioSet ontology)
 * **category_d4** - category name at the depth-4 in the hierarchy of the ontology (The name exactly matches with Google's AudioSet ontology)
 * **category_d5** - category name at the depth-5 in the hierarchy of the ontology (The name exactly matches with Google's AudioSet ontology)
 * **category_d6** - category name at the depth-6 in the hierarchy of the ontology (The name exactly matches with Google's AudioSet ontology)
-* **reference_filename** - file name of the reference recording
-
+* **is_reference** - Boolean of whether this original recording was used as a reference recording that was imitated.
+* **multi_labeled** - Boolean of whether this original recording was used for multiple classes
 
 
 ### Column descriptions for `vocal_imitations.txt` (tab-delimited)
@@ -89,8 +91,8 @@ The quality assessment data includes all the data from the quality assessment ta
 * **participants\_sound\_recording\_description** - The participant's description of the stimulus sound recording (if a stimulus\_type='sound recording')
 * **participants\_sound\_recording\_description\_confidence** - The participant's confidence in their sound recording description on 5-level Likert scale (*Not at all confident, Not so confident, Neutral, Confident, Very confident*)
 
-### Column descriptions for `vocal_imitations_assessment.txt` (tab-delimited)
 
+### Column descriptions for `vocal_imitations_assessment.txt` (tab-delimited)
 * **id** - unique Id of the listening task
 * **imitation_filename** - File name of the vocal imitation presented in the listening task
 * **reference_recording** - File name of the reference recording presented with the vocal imitation
@@ -99,6 +101,7 @@ The quality assessment data includes all the data from the quality assessment ta
 * **is_right_imitation** - Boolean of whether this vocal imitation was identified as someone imitating the assigned reference recording.
 * **rating** - rating (between 0 and 100) of how good this imitation is. If the vocal recording was deemed to not be an imitation of the reference recording, its quality was not evaluated and this field is intentionally left blank.
 * **wrong_pair** - Boolean of whether the pair of this vocal imitation and the reference recording is an incorrect pair (True: incorrect, False: correct)
+
 
 ### Column descriptions for `participant_survey.csv`
 * **participant\_id** - The id of the participant
@@ -113,11 +116,13 @@ The quality assessment data includes all the data from the quality assessment ta
 * **years\_actively\_singing** - The participant's response to the question: "Estimate (in years and months, e.g. 5 years 2 months) how long you have been actively singing."
 * **frequency\_singing** - The participant's response to the question: "How frequently do you sing?" (*Never, Less than once or twice a year, Once or twice a year, Once or twice a month, Once or twice a week, More than once or twice a week*)
 
-### Column descriptions for `reference_audio_credits.csv`
-* **filename** - The file name of reference recordings
-* **user** - User name who uploaded the recording to Freesound
+
+### Column descriptions for `original_recordings_license.csv`
+* **filename** - The file name of original recordings
+* **username** - User name who uploaded the recording to Freesound
 * **user_url** URL to the user page on Freesound
 * **file_url** URL to the recordings on Freesound
+* **freesound_id** Freesound ID of the recording
 
 
 ## References
