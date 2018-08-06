@@ -124,7 +124,7 @@ The quality assessment data includes all the data from the quality assessment ta
 * **file_url** URL to the recordings on Freesound
 * **freesound_id** Freesound ID of the recording
 
-## Errata
+## Additional Notes
 Of the recordings collected for the dataset, 49 out of 2,985 were collected for multiple classes, if they were appropriate examples for both classes. For example, some cat growl recordings also contained cat hissing sounds; we split such recordings into clips containing just growls or just hisses and included the relevant sound clips in their respective categories. None of the repeated files were used as reference recordings for crowd-worker to imitate. Therefore, all 302 reference recordings are all unique in the dataset. 
 
 A list of sounds shared across categories can be found in the duplicates.csv
