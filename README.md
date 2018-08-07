@@ -1,6 +1,6 @@
 # Vocal Imitation Set
-v1.1 2018-08-18  
-
+v1.1 2018-08-18
+   
 ## Overview
 Imitating sounds with one's voice is a natural way of delivering an audio concept in human-to-human communication. If a machine could understand human's vocal imitation, users could be able to interact with machine in this natural way for various audio-related tasks. 
 
